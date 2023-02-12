@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+{% if cat_posts %}
+	<h1>{{cats}}</h1>
+	<ul>
+	{% for post in cat_posts %}
+		<li><a href = "{% url 'article-detail' post.pk %}">{{post.title}}</a>
+		 - {{post.tags}}
+		 - {{post.author}} 
+		 - {{post.date_published}}
+		 {% if user.is_authenticated %}
+		 	{% if user.id == post.author.id %}
+		 		- <a href="{% url 'update-article' post.pk %}">(Edit)</a>
+		 	{% endif %}
+		 {% endif %}
+		 <br>
+		{{post.snippet|safe}} 
+	{% endfor %}
+	</ul>
+<br>
+<br>
+{% else %}
+	<h1>Sorry this page does not exist</h1>
+{% endif %}
+
+
+
+{%endblock%}

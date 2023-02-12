@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+{% block title %} Register {% endblock %}
+{%block content%}
+
+<head>
+	<title>Login</title>
+</head>
+<h1>Sign up</h1>
+<div class = 'form-group'>
+	<form method="POST">
+		{%csrf_token%} <!-- csfr: prevents hackers from stealing form data during submission -->
+		{{form.as_p}}
+		<button class = "btn btn-secondary">Register</button>
+	</form>
+</div>
+
+{%endblock%}

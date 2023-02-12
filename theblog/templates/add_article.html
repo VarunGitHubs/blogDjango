@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Write Article{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+	<h1>Add Article</h1>
+	<br>
+	<div class = 'form-group'>
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{form.media}}
+			{{ form.as_p }}
+			<button class = 'btn btn-success'>Publish</button>
+		</form>
+	</div>
+
+	<script>
+		var name = "{{user.id}}"; // Gets the user's primary key
+		document.getElementById('user_label').value = name; // stores the id in a HTML tag in 'forms.py'
+	</script>
+{% else %}
+	<h1>Permission Denied</h1>
+{% endif %}
+{% endblock %}

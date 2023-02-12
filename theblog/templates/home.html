@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+
+<h1>Posts</h1>
+
+
+<div class = 'top'>
+	{% for post in top_posts %}
+		<article class="article">
+			<div class="ts">
+				<h3>
+					<a href="{% url 'article-detail' post.pk%}" >{{ post.title }}</a>
+				</h3>
+				<p class = 'a'>
+					<a href="{% url 'profile' post.author.pk %}">{{ post.author }}</a>
+				</p>
+			</div>
+			<p>{{ post.snippet|safe }}</p>
+		</article>
+	{% endfor %}
+</div>
+
+<br>
+<br>
+
+<div class = 'grid-container'>
+	<div class = 'overall'>
+		<div class = 'all_blogs' style="float: left;margin: 10px;">
+			{% for post in object_list %}
+				<article class="main_branch_articles">
+					<button class = 'aa'><a href="{% url 'profile' post.author.pk %}" style="float: left; padding: 7px">{{ post.author }}</a></button>
+					<p class = 'branch_article'><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a></p>
+					<p class = 'summary'>{{ post.snippet|safe }}</p>
+					<button type="button" class="tags"><a href="{% url 'category' post.tags %}">{{ post.tags }}</a></button>
+				</article>
+				<br>
+				<div class = 'line'></div>
+				<br>
+			{% endfor %}
+		</div>
+	</div>
+	<div class = 'overall' style="float:left; margin: 40px;">
+		{% for author in top_authors %}
+			<div class = 'wrapper' style="display: grid;">
+				<div class = 'k one' >
+					<h5>{{ author.user.username }}</h5>
+				</div>
+				<button type="button" class="tags"><a href="{% url 'profile' author.pk %}" style="color: green;">View</a></button>
+				<div class = 'k three'>
+					Followers: <b>{{ author.follower_count }}</b>
+				</div>
+			</div>
+			<br>
+		{% endfor %}
+	</div>
+
+	
+</div>
+
+
+
+{%endblock%}

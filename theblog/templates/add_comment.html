@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Post Comment{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+	<h1>Add Comment</h1>
+	<br>
+	<div class = 'form-group'>
+		<form method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button class = 'btn btn-success'>Add</button>
+		</form>
+	</div>
+
+{% else %}
+	<h1>Permission Denied</h1>
+{% endif %}
+{% endblock %}
