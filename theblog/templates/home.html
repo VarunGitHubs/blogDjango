@@ -3,7 +3,7 @@
 {%block content%}
 
 
-<h1>Posts</h1>
+<h1 style="position: relative; top:-25px">Top Posts</h1>
 
 
 <div class = 'top'>
@@ -27,7 +27,7 @@
 
 <div class = 'grid-container'>
 	<div class = 'overall'>
-		<div class = 'all_blogs' style="float: left;margin: 10px;">
+		<div class = 'all_blogs' style="float: left;margin: 10px; position: relative; top: 20px">
 			{% for post in object_list %}
 				<article class="main_branch_articles">
 					<button class = 'aa'><a href="{% url 'profile' post.author.pk %}" style="float: left; padding: 7px">{{ post.author }}</a></button>
@@ -41,9 +41,10 @@
 			{% endfor %}
 		</div>
 	</div>
-	<div class = 'overall' style="float:left; margin: 40px;">
+	<div class = 'overall' style="float:left; margin: 40px; position: relative; left:70px">
 		{% for author in top_authors %}
-			<div class = 'wrapper' style="display: grid; position: relative; left: 124px;">
+			<img src="{{ author.picture.url }}" alt="" class = "rounded-circle" width = "100" height="100" style="float: left; top:-50px">
+			<div class = 'wrapper' style="display: grid; position: relative; left: 70px; top: 4px">
 				<div class = 'k one' >
 					<h5>{{ author.user.username }}</h5>
 				</div>
@@ -53,12 +54,16 @@
 				</div>
 			</div>
 			<br>
+			<div class="line"></div>
 		{% endfor %}
 	</div>
 
 	
 </div>
 
+<div class = 'whitespace' style="background-color: white; width: 150px;  height: 700px;">
+	
+</div>
 
 
 {%endblock%}

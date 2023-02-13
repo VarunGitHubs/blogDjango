@@ -28,6 +28,7 @@
 	<div class="profile_info">
 		<div class = 'row justify-content-center mt-5'>
 			<div class="card shadow-sm col border-bottom px-5 pt-3">
+				<div class = "card-header" style="width: 532px; position: relative; right: 50px;top:-16px">Profile</div>
 				<img src="{{ profile.picture.url }}" class = "rounded-circle" width = "100" height="100">
 				{% if profile.name %}
 					<h3 class = 'py-4'> {{ profile.user.username }}
@@ -116,7 +117,8 @@
 	</div>
 </h4>
 </div>
-	<div class = 'post_section'>
+	<div class = 'shadow-sm post_section' style="border-radius: 4px;">
+		<div class = 'card-header' style="position: relative; top: -30px; width: 800px; right: 30px;">Posts</div>
 		{% for post in posts %}
 			<a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>
 			{% if request.user == post.author %}<a href="{% url 'update-article' post.pk %}">(Edit)</a>{% endif %}
