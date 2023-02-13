@@ -36,14 +36,14 @@
 					<button type="button" class="tags"><a href="{% url 'category' post.tags %}">{{ post.tags }}</a></button>
 				</article>
 				<br>
-				<div class = 'line'></div>
+				<hr>
 				<br>
 			{% endfor %}
 		</div>
 	</div>
 	<div class = 'overall' style="float:left; margin: 40px;">
 		{% for author in top_authors %}
-			<div class = 'wrapper' style="display: grid;">
+			<div class = 'wrapper' style="display: grid; position: relative; left: 124px;">
 				<div class = 'k one' >
 					<h5>{{ author.user.username }}</h5>
 				</div>

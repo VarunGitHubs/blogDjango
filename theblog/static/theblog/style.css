@@ -1,6 +1,7 @@
 body{
 	background-color: white;
 	margin: 0px;
+  padding: 0;
 }
 
 .container{
@@ -9,7 +10,7 @@ body{
 
 
 .all_blogs{
-  height:600px;
+  height:679px;
   width:60%;
   overflow:auto;
   background-color:white;
@@ -135,6 +136,7 @@ hr {
   width: 300px;
   border-radius: 10px;
   border-spacing: 5px 1rem;
+  top: -40px;
 }
 
 

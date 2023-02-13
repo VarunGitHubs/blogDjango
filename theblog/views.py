@@ -21,17 +21,13 @@ class HomeView(ListView):
 		tag_menu = Category.objects.all()
 
 		author_information = UserProfile.objects.all().order_by('-follower_count')
-		is_following = False
-		for author in author_information:
-			profile = UserProfile.objects.get(pk = author.pk)
-			num_followers = profile.follower_count
-			is_following = False
+		top_authors = author_information[:6]
 
 
 		context = super(HomeView, self).get_context_data(*args, **kwargs)		
 		context['tag_menu'] = tag_menu
 		context['top_posts'] = top_six
-		context['top_authors'] = author_information
+		context['top_authors'] = top_authors
 		#context['is_following'] = is_following
 		return context
 

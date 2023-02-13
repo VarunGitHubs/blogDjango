@@ -1,0 +1,53 @@
+body {
+    color: black;
+    background: #f1f2f7;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0px !important;
+    margin: 0px !important;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+}
+
+.profile_info{
+    float: left;
+    width: 500px;
+    position: relative;
+    left: 50px;
+}
+
+.post_section {
+    float: left;
+    height:1000px;
+    width:700px;
+    overflow:auto;
+    background-color:white;
+    margin: 50px;
+    position: relative;
+    left: 200px;
+    padding: 30px;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.all {
+    position: relative;
+    left: 400px;
+}
