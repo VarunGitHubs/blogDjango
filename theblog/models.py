@@ -57,7 +57,11 @@ class UserProfile(models.Model):
 	followers = models.ManyToManyField(User, blank = True, related_name = 'followers')
 	notification  = models.BooleanField(default = True, blank = False, null = False)
 	follower_count = models.IntegerField(null = True, default = 0)
-
+	website = models.CharField(default = None, blank = True, null = True, max_length = 50)
+	GitHub = models.CharField(default = None, blank = True, null = True, max_length = 50)
+	Twitter = models.CharField(default = None, blank = True, null = True, max_length = 50)
+	Instagram = models.CharField(default = None, blank = True, null = True, max_length = 50)
+	FaceBook = models.CharField(default = None, blank = True, null = True, max_length = 50)
 
 
 @receiver(post_save, sender=User)

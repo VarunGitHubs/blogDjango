@@ -17,8 +17,8 @@ class PostForm(forms.ModelForm):
 			'title':forms.TextInput(attrs = {'class':'form-control', 'placeholder':'Title...'}), # title field is a text input 
 			'author':forms.TextInput(attrs = {'class':'form-control', 'value':'', 'id':'user_label', 'type':'hidden'}), # Author
 			# assigned automatically
-			'tags': forms.Select(choices = choices, attrs = {'class':'form-control'}),
-			#'tags':forms.Select(choices = choice_list, attrs = {'class':'form-control'}), # Tags is a dropdown selection bar
+			#'tags': forms.Select(choices = choices, attrs = {'class':'form-control'}),
+			'tags':forms.Select(choices = choice_list, attrs = {'class':'form-control'}), # Tags is a dropdown selection bar
 			'body':forms.Textarea(attrs ={'class':'form-control', 'placeholder':'Start Writing...'}), # Article is written here
 			'snippet':forms.TextInput(attrs = {'class':'form-control', 'placeholder':'Snippet...'}) # Snippet is written here
 		}

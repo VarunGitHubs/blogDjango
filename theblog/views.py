@@ -148,7 +148,7 @@ class ProfileView(View):
 
 class UserProfileUpdateView(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
 	model = UserProfile
-	fields = ['name', 'bio','birthday','location', 'picture']
+	fields = ['name', 'bio','birthday','location', 'picture', 'website','GitHub','Twitter','Instagram','FaceBook']
 	template_name = 'profile_edit.html'
 
 	def get_success_url(self):
