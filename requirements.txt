@@ -102,4 +102,3 @@ Werkzeug==2.2.2
 whitenoise==6.3.0
 yarl==1.8.2
 zipp==3.11.0
-python-3.10.9
