@@ -28,7 +28,7 @@
 	{% csrf_token %}
 	<button type = 'submit' name = 'post_id' value = '{{ post.id }}' class = 'btn btn-primary btn-sm'>Upvote</button> <!-- Upvote button -->
 </form>
-<h6>{{total_likes}} Likes</h6>
+<h6>{{ post.number_likes }} Likes</h6>
 <br>
 <hr>
 <h1>Comments</h1>

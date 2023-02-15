@@ -40,6 +40,7 @@ class ArticleDetailView(DetailView):
 		article_information = get_object_or_404(Post, id = self.kwargs['pk'])
 		total_likes = article_information.total_like_count()
 		tag_menu = Category.objects.all()
+		context['article'] = article_information
 		context['total_likes'] = total_likes
 		context['tag_menu'] = tag_menu
 		return context
