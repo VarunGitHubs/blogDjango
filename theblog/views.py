@@ -174,7 +174,7 @@ class RemoveFollower(LoginRequiredMixin, View):
 	def post (self, request, pk, *args, **kwargs):
 		profile = UserProfile.objects.get(pk = pk)
 		profile.followers.remove(request.user)
-		profile.num_followers -= 1
+		profile.follower_count -= 1
 		profile.save()
 		return redirect('profile', pk=profile.pk)
 
