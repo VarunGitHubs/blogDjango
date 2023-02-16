@@ -40,9 +40,6 @@
 					</h3>
 				{% else %}
 					<h3>{{ user.username }}
-						{% if request.user == user %}
-							<a href="{% url 'edit-profile' profile.pk %}" style="color:#333">Create Profile</a>
-						{% endif %}
 					</h3>
 				{% endif %}
 

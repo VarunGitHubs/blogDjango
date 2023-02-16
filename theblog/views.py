@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from transformers import pipeline
-
+from django.conf import settings
 summarizer = pipeline('summarization')
 
 class HomeView(ListView):
@@ -60,10 +60,17 @@ class ArticlePostView(CreateView):
 		form.instance.snippet = snippet
 
 		profile = get_object_or_404(UserProfile, pk = form.instance.author.pk)
-		poster_email = "ArticleBuzz@gmail.com"
 		text_message = "New Post!"
 		followers = profile.followers.all()
-		email_list = [follower.email for follower in followers if follower.notification == True]
+		email_list = [follower.email for follower in followers if follower.profile.notification == True]
+
+		subject = "New Article!"
+		from_email = settings.EMAIL_HOST_USER
+
+		to_email = email_list
+		message = "Author has just posted a new Post. Check it out at ArticleBuzz.co.uk"
+
+		send_mail(subject = subject, from_email = from_email, recipient_list = to_email, message = message, fail_silently = False)
 		return super().form_valid(form)
 
 

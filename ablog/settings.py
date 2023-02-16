@@ -143,8 +143,8 @@ LOGOUT_REDIRECT_URL = 'home'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'varun.srijayvar@gmail.com'
-EMAIL_HOST_PASSWORD = 'Valorant123'
+EMAIL_HOST_USER = 'articlebuzzdigest@gmail.com'
+EMAIL_HOST_PASSWORD = 'fffukbqksgytmtmr'
 EMAIL_USE_TLS = True
 #EMAIL_SSL = False
 
