@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'users',
     'crispy_forms',
     'django_bootstrap_icons',
-    'landing'
+    'landing',
+    'tensorflow',
+    'transformers',
 ]
 
 MIDDLEWARE = [

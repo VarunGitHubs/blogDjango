@@ -150,3 +150,7 @@ hr {
   top: -60px;
 }
 
+.summary:first-letter{
+  text-transform:capitalize;
+
+}

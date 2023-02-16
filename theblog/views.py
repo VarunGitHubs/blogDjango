@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect 
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, FormView
 from .models import Post, Category, Comment, UserProfile
 from .forms import PostForm, UpdateForm, CommentForm
 from django.http import HttpResponseRedirect
@@ -7,7 +7,9 @@ from django.urls import reverse, reverse_lazy
 from django.core.mail import send_mail
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from transformers import pipeline
 
+summarizer = pipeline('summarization')
 
 class HomeView(ListView):
 	ordering = ['-id']
@@ -40,6 +42,7 @@ class ArticleDetailView(DetailView):
 		article_information = get_object_or_404(Post, id = self.kwargs['pk'])
 		total_likes = article_information.total_like_count()
 		tag_menu = Category.objects.all()
+
 		context['article'] = article_information
 		context['total_likes'] = total_likes
 		context['tag_menu'] = tag_menu
@@ -50,7 +53,19 @@ class ArticlePostView(CreateView):
 	form_class = PostForm
 	template_name = "add_article.html"
 
-	#def post(self, request, pk, *args, **kwargs):
+
+	def form_valid(self, form):
+		snippet = summarizer(form.instance.body, max_length = 30)
+		snippet = snippet[0]['summary_text']
+		form.instance.snippet = snippet
+
+		profile = get_object_or_404(UserProfile, pk = form.instance.author.pk)
+		poster_email = "ArticleBuzz@gmail.com"
+		text_message = "New Post!"
+		followers = profile.followers.all()
+		email_list = [follower.email for follower in followers if follower.notification == True]
+		return super().form_valid(form)
+
 
 
 class AddCommentView(CreateView):
@@ -180,14 +195,7 @@ class RemoveFollower(LoginRequiredMixin, View):
 		return redirect('profile', pk=profile.pk)
 
 
-def post_created(request, pk):
-	profile = UserProfile.objects.get(pk = pk)
-	test_message = "Thank you for following ArticleBuzz"
-	if request.method == "POST":
-		poster_email = "ArticleBuzz@gmail.com"
-		followers = profile.followers.all
-		follower_email_list = [follower.email for follower in followers if profile.follower.notifications == False] 
-		send_mail ("new post", test_message, poster_email, follower_email_list)
+
 
 
 

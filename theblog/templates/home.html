@@ -17,7 +17,7 @@
 					<a href="{% url 'profile' post.author.pk %}">{{ post.author }}</a>
 				</p>
 			</div>
-			<p>{{ post.snippet|safe }}</p>
+			<p class = 'summary'>{{ post.snippet|safe }}</p>
 		</article>
 	{% endfor %}
 </div>
