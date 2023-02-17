@@ -68,7 +68,7 @@ class ArticlePostView(CreateView):
 		from_email = settings.EMAIL_HOST_USER
 
 		to_email = email_list
-		message = "{} has just posted a new article! Read the Article at http://localhost:8000/profile/{}".format(form.instance.author.username, form.instance.author.pk)
+		message = "{} has just posted a new article: {}! Read the Article at http://localhost:8000/profile/{}".format(form.instance.author.username, form.instance.title, form.instance.author.pk)
 
 		send_mail(subject = subject, from_email = from_email, recipient_list = to_email, message = message, fail_silently = False)
 		return super().form_valid(form)
