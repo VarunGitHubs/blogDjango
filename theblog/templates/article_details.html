@@ -19,31 +19,32 @@
 	<img src="{{ post.header_image.url }}" class="header_image">
 {% endif %}
 <br>
-<br>
 {{post.body|safe}} <!-- formatting is allowed due to |safe -->
-<br>
 <hr>
+{% if user.is_authenticated %}
+	<form action="{% url 'like_post' post.pk %}" method = 'POST'>
+		{% csrf_token %}
+		<button type = 'submit' name = 'post_id' value = '{{ post.id }}' class = 'btn btn-primary btn-sm'>Upvote</button> <!-- Upvote button -->
+	</form>
+{% endif %}
 <br>
-<form action="{% url 'like_post' post.pk %}" method = 'POST'>
-	{% csrf_token %}
-	<button type = 'submit' name = 'post_id' value = '{{ post.id }}' class = 'btn btn-primary btn-sm'>Upvote</button> <!-- Upvote button -->
-</form>
 <h6>{{ post.number_likes }} Likes</h6>
 <br>
 <hr>
 <h1>Comments</h1>
-
-{% if not post.comments.all %}
-	No Comments Yet... <a href="{% url 'add-comment' post.pk %}">Add one</a>
-{% else %}
-<a href="{% url 'add-comment' post.pk %}">Add Comment</a> <br><br>
-	{% for comment in post.comments.all %}
-		<strong>{{ comment.name }} - {{comment.date_added}}</strong>
-		<br>
-		{{comment.body}}
-		<br>
-		<br>
-	{% endfor %}
+{% if user.is_authenticated %}
+	{% if not post.comments.all %}
+		No Comments Yet... <a href="{% url 'add-comment' post.pk %}">Add one</a>
+	{% else %}
+	<a href="{% url 'add-comment' post.pk %}">Add Comment</a> <br><br>
+		{% for comment in post.comments.all %}
+			<strong>{{ comment.name }} - {{comment.date_added}}</strong>
+			<br>
+			{{comment.body}}
+			<br>
+			<br>
+		{% endfor %}
+	{% endif %}
 {% endif %}
 
 {%endblock%}
