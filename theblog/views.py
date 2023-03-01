@@ -99,10 +99,10 @@ def LikePostView(request, pk):
 	post.save()
 	return HttpResponseRedirect(reverse('article-detail', args = [str(pk)]))
 
-class AddCategoryView(CreateView):
-	model = Category
-	template_name = 'add_category.html'
-	fields = '__all__'
+#class AddCategoryView(CreateView):
+#	model = Category
+#	template_name = 'add_category.html'
+#	fields = '__all__'
 
 def CategoryView(request, cats):
 	cat_posts = Post.objects.filter(tags = cats)

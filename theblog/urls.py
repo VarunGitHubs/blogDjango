@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 #from . import views
-from .views import HomeView, ArticleDetailView, ArticlePostView,UpdatePostView, LikePostView, AddCategoryView, CategoryView,AddCommentView, CategoryListView, ProfileView, UserProfileUpdateView, AddFollower, RemoveFollower
+from .views import HomeView, ArticleDetailView, ArticlePostView,UpdatePostView, LikePostView, CategoryView,AddCommentView, CategoryListView, ProfileView, UserProfileUpdateView, AddFollower, RemoveFollower
 
 urlpatterns = [
     #path('', views.home, name = 'home'),
@@ -12,7 +12,7 @@ urlpatterns = [
     path("add_article/", ArticlePostView.as_view(), name = "add-article"),
     path('update_article/<int:pk>', UpdatePostView.as_view(), name = 'update-article'),
     path('like/<int:pk>', LikePostView, name = 'like_post'),
-    path('add_category/', AddCategoryView.as_view(), name = 'add-category'),
+    #path('add_category/', AddCategoryView.as_view(), name = 'add-category'),
     path('category/<str:cats>', CategoryView, name = 'category'),
     path('article/<int:pk>/comment', AddCommentView.as_view(), name = 'add-comment'),
     path('category-list/', CategoryListView, name = 'category-list'),
