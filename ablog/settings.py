@@ -27,7 +27,7 @@ from django.conf.urls.static import static
 SECRET_KEY = 'django-insecure-w+arc6709m3^0t__ck21^1k8=qwrz8_65z!a^wq^v%qp#x_dl1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
